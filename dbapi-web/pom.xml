@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>dbapi</artifactId>
+        <groupId>com.dbapi</groupId>
+        <version>${project.version}</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>dbapi-web</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.dbapi</groupId>
+            <artifactId>dbapi-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.dbapi</groupId>
+            <artifactId>dbapi-datasource</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.dbapi</groupId>
+            <artifactId>dbapi-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.dbapi</groupId>
+            <artifactId>dbapi-api</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <!-- 设置最终生成的 tar.gz 文件名 -->
+                    <descriptors>
+                        <descriptor>src/main/resources/assembly/assembly.xml</descriptor>
+                    </descriptors>
+                    <finalName>dbapi-${project.version}</finalName> <!-- 生成的 tar.gz 文件名 -->
+                    <appendAssemblyId>false</appendAssemblyId> <!-- 关闭追加 ID -->
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

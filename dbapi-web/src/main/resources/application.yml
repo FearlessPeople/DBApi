@@ -1,0 +1,62 @@
+# 服务器配置
+server:
+  # 服务器端口
+  port: 8088
+# 接口请求前缀，统一在WebConfig.java中配置
+#  servlet:
+#    context-path: /api
+
+# 应用程序名称
+spring:
+  profiles:
+    active: dev
+
+  application:
+    name: DbApi
+
+  # 开发工具配置
+  devtools:
+    restart:
+      # 热部署生效
+      enabled: true
+      # 设置重启目录
+      additional-paths: src/main/java
+      # 设置classpath目录下的static/** 内容修改后不重启
+      exclude: static/**
+
+  # 文件上传配置
+  servlet:
+    multipart:
+      # 文件上传大小限制
+      maxFileSize: 10MB
+      maxRequestSize: 10MB
+
+  # Swagger高版本启动异常配置，低版本可以不配置
+  mvc:
+    static-path-pattern: /**  # 让静态资源直接通过根路径访问
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+    view:
+      default-view-name: index
+
+  # 日志
+  logging:
+    level:
+      # 包名: debug
+      # 例如
+      root: debug
+
+  #  jackson
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+
+  # banner
+  banner:
+    charset: UTF-8
+    location: classpath:banner.txt
+# MybatisPlus配置
+#mybatis-plus:
+#  configuration:
+#    # sql日志打印现已改成使用SqlInterceptor来实现
+#    logImpl: org.apache.ibatis.logging.stdout.StdOutImpl

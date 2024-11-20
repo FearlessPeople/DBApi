@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dbapi.dao.SysUserDao">
+    <!--分页查询-->
+    <select id="selectPage" resultType="com.dbapi.entity.SysUser">
+        select
+        id,
+        nickname,
+        username,
+        password,
+        avatar,
+        phone_number,
+        email,
+        remark,
+        introduction,
+        status,
+        is_admin,
+        is_delete,
+        create_time,
+        update_time
+        from sys_user t
+        <where>
+            <if test="sysUser.id != null and sysUser.id != '' ">
+                AND t.id = #{sysUser.id}
+            </if>
+            <if test="sysUser.username != null and sysUser.username != '' ">
+                AND t.username LIKE CONCAT('%', #{sysUser.username}, '%')
+            </if>
+            <if test="sysUser.email != null and sysUser.email != '' ">
+                AND t.email LIKE CONCAT('%', #{sysUser.email}, '%')
+            </if>
+            <if test="sysUser.phoneNumber != null and sysUser.phoneNumber != '' ">
+                AND t.phone_number = #{sysUser.phoneNumber}
+            </if>
+            <!-- 根据其他条件添加更多的 AND 条件 -->
+        </where>
+    </select>
+
+</mapper>

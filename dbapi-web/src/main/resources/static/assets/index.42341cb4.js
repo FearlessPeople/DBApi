@@ -1,0 +1,1 @@
+import{_ as o}from"./index.959f545d.js";import{D as t,aF as a,aI as _,aN as c,bg as s}from"./arco.ec9395ed.js";const n={};function r(d,p){const e=s;return t(),a(e,{class:"footer"},{default:_(()=>[c("DBApi")]),_:1})}const x=o(n,[["render",r],["__scopeId","data-v-ea486ae3"]]);export{x as F};

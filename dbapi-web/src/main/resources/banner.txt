@@ -1,0 +1,13 @@
+${AnsiColor.BRIGHT_YELLOW}${AnsiStyle.BOLD}
+ _______  .______           ___      .______    __
+|       \ |   _  \         /   \     |   _  \  |  |
+|  .--.  ||  |_)  |       /  ^  \    |  |_)  | |  |
+|  |  |  ||   _  <       /  /_\  \   |   ___/  |  |
+|  '--'  ||  |_)  |     /  _____  \  |  |      |  |
+|_______/ |______/     /__/     \__\ | _|      |__|
+
+DBApi：一个将SQL快速生成API的平台
+${AnsiColor.CYAN}${AnsiStyle.BOLD}
+::  Java                 ::  (v${java.version})
+::  Spring Boot          ::  (v${spring-boot.version})
+${AnsiStyle.NORMAL}

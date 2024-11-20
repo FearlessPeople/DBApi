@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dbapi.dao.ApiRequestLogDao">
+    <select id="getTrendData" resultType="com.dbapi.entity.LineChartRecord">
+        select
+        date(created_time) as x
+        ,count(api_path) as y
+        from dbapi.api_request_log t where created_time >= DATE_FORMAT(NOW(), '%Y-%m-01')
+        group by date(created_time)
+    </select>
+
+</mapper>

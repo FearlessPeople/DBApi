@@ -1,0 +1,57 @@
+# 应用程序名称
+spring:
+
+  # 文件上传配置
+  servlet:
+    multipart:
+      # 文件上传大小限制
+      maxFileSize: 10MB
+      maxRequestSize: 10MB
+
+  # 数据源配置
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/dbapi?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+
+  #  redis配置
+  redis:
+    host: localhost
+    port: 6379
+    database: 1
+
+  #  发送邮件
+  mail:
+    host: smtp.163.com
+    port: 465
+    username: dbapi@163.com
+    password: dbapi
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+# 日志
+logging:
+  path: ${LOG_HOME_PATH:logs}  # 自定义日志路径
+
+# Jwt配置
+jwt:
+  secret: B02ynUBr1Z87qL5H9vQeur/S7Bia7hHjVvEJS7hbZyo=
+  expiration: 86400000 # 过期时间(单位ms)  公式= 1小时 * 60分钟 * 60秒 * 1000毫秒
+#  expiration: 60000 # 过期时间为1分钟，单位ms
+
+#===========================================以下是系统自定义配置===========================================
+# 文件上传路径配置
+file:
+  upload-dir: ../uploads/
+
+# 用户相关配置
+user:
+  # 管理员权限控制
+  admin:
+    allPermissions: true  # 如果为 true，则管理员获取sys_permissions表里所有权限，否则获取管理员对应角色自己配置的权限

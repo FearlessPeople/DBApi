@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dbapi.dao.SysRoleDao">
+    <!--分页查询-->
+    <select id="selectPage" resultType="com.dbapi.entity.SysRole">
+        select
+        id,
+        name,
+        remark,
+        create_time,
+        update_time
+        from sys_role t
+        <where>
+            <if test="sysRole.id != null and sysRole.id != '' ">
+                AND t.id = #{sysRole.id}
+            </if>
+            <if test="sysRole.name != null and sysRole.name != '' ">
+                AND t.name LIKE CONCAT('%', #{sysRole.name}, '%')
+            </if>
+            <if test="sysRole.remark != null and sysRole.remark != '' ">
+                AND t.remark LIKE CONCAT('%', #{sysRole.remark}, '%')
+            </if>
+        </where>
+    </select>
+   <!--查询角色权限-->
+    <select id="getPermissionsByRoleId" resultType="com.dbapi.entity.SysPermissions">
+        SELECT
+        p.id
+        ,p.name
+        ,p.expression
+        ,p.remark
+        ,p.status
+        ,p.create_time
+        ,p.update_time
+        FROM sys_role_permissions rp
+        JOIN sys_permissions p ON rp.permission_id = p.id
+        WHERE p.status = 0
+        AND rp.role_id = #{id}
+    </select>
+
+</mapper>

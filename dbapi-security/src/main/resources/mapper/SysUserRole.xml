@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dbapi.dao.SysUserRolesDao">
+    <!--获取当前用户所有角色列表-->
+    <!--        left join (
+            select * from sys_user_roles where user_id = #{userId}
+        ) u on r.id = u.role_id
+        -->
+    <select id="getCurrentUserRoles" resultType="com.dbapi.entity.SysRole">
+        select
+        r.id,
+        r.name,
+        r.remark,
+        r.create_time,
+        r.update_time
+        from sys_role r
+        left join sys_user_roles ur on r.id = ur.role_id
+        <where>
+            <if test="userId != null and userId != '' ">
+                AND ur.user_id = #{userId}
+            </if>
+        </where>
+    </select>
+
+
+</mapper>
