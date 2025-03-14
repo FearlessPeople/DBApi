@@ -47,6 +47,8 @@ DBApi 非常适合开发者、数据工程师和希望简化数据访问、缩�
 
 ## 前端
 
+[前端项目地址](https://github.com/FearlessPeople/DBApi_ui)
+
 - **Vue 3**：基于 Composition API 的现代化前端框架。
 - **Pinia**：轻量级状态管理工具，替代 Vuex。
 - **Vite**：极速开发和构建工具，提升开发效率。
